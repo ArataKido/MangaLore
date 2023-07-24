@@ -14,5 +14,5 @@ class User(Base):
     nickname                = Column(String)
     is_acitve               = Column(Boolean, default=True)
 
-    bookmark                = relationship('Bookmark', back_populates='user', cascade='all, delete-orphan')
-    user_manga_status       = relationship('UserMangaStatus', back_populates='user', cascade='all, delete-orphan')
+    bookmark                = relationship('Bookmark', back_populates='user', cascade='all, delete')
+    user_manga_status       = relationship('UserMangaStatus', back_populates='user', cascade='all, delete')

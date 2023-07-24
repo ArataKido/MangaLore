@@ -1,6 +1,6 @@
 from backend.db.models.base import Base
 from sqlalchemy import Boolean, Column, ForeignKey, Integer, String
-from sqlalchemy.orm import relationship, backref
+from sqlalchemy.orm import relationship
 
 
 class Manga(Base):
@@ -19,8 +19,8 @@ class Manga(Base):
     
     genre                      = relationship('Genre', back_populates='manga', )
     tag                        = relationship('Tag', back_populates='manga', )
-    bookmark                   = relationship('Bookmark', back_populates='manga', cascade='all, delete-origin')
-    user_manga_status          = relationship('UserMangaStatus', back_populates='manga', cascade='all, delete-origin')
+    bookmark                   = relationship('Bookmark', back_populates='manga', cascade='all, delete')
+    user_manga_status          = relationship('UserMangaStatus', back_populates='manga', cascade='all, delete')
 
 class Tag(Base):
     __tablename__               = "tag"
