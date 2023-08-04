@@ -22,32 +22,7 @@ class Manga(Base):
     bookmark                   = relationship('Bookmark', back_populates='manga', cascade='all, delete')
     user_manga_status          = relationship('UserMangaStatus', back_populates='manga', cascade='all, delete')
 
-class Tag(Base):
-    __tablename__               = "tag"
 
-    id                          = Column(Integer, primary_key=True, index=True)
-    name                        = Column(String, unique=True, index=True)
-
-    manga                       = relationship('Manga', secondary='tag',)
-
-class Genre(Base):
-    __tablename__               = "genre"
-
-    id                          = Column(Integer, primary_key=True, index=True)
-    name                        = Column(String, unique=True, index=True)
-
-    manga                       = relationship('Manga', secondary='genre',)
-
-
-class Bookmark(Base):
-    __tablename__               = 'bookmark'
-    
-    id                          = Column(Integer, primary_key=True, index=True)
-    manga_id                    = Column(Integer, ForeignKey('manga.id'), primary_key=True)
-    user_id                     = Column(Integer, ForeignKey('user.id'), primary_key=True)
-
-    manga                       = relationship('Manga', secondary='bookmark',)
-    user                        = relationship('User', secondary='bookmark')
 
 class UserMangaStatus(Base):
     __tablename__               = 'user_manga_status'
